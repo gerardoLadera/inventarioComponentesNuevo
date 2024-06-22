@@ -2,6 +2,8 @@ package inventarioComponentesBackend;
 
 
 
+import java.util.Date;
+import java.sql.Time;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +11,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import inventarioComponentesBackend.model.Movimiento;
 import inventarioComponentesBackend.model.Producto;
 import inventarioComponentesBackend.model.Proveedor;
 import inventarioComponentesBackend.model.Usuario;
+import inventarioComponentesBackend.service.MovimientoService;
 import inventarioComponentesBackend.service.ProductoService;
 import inventarioComponentesBackend.service.ProveedorService;
 import inventarioComponentesBackend.service.UsuarioService;
@@ -28,6 +32,9 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 	@Autowired
 	private ProveedorService proveedorService;
 
+	@Autowired
+	private MovimientoService movimientoService;
+	
 
 
 	public static void main(String[] args) {
@@ -38,10 +45,19 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 
 	@Override
 	public void run(String... args) throws Exception {
+
+		Date fecha= new Date();
+		long currentTimeMillis = System.currentTimeMillis();
+		Time hora=new Time(currentTimeMillis );
+		movimientoService.registrarMovimiento(new Movimiento("Salida",fecha, hora, "Lapto Dell","006"));
+		//movimientoService.modificarMovimiento("00001", new Movimiento("Entrada",fecha, hora, "Laptos Dell i5","003"));
+		//Movimiento movi=movimientoService.buscarMovimientoPorId("00001");
+		//List<Movimiento>movimientos=movimientoService.obtenerTodosLosMovimientos();
+		//movimientoService.eliminarMovimiento("00002");
 		//proveedorService.agregarProveedor(new Proveedor("CoolerMaster", "SanIsidro","97105020","coolermaster.peru@gmail.com"));
 		//proveedorService.actualizarProveedor(2, new Proveedor("CoolerMaster", "Miraflores","97105020","coolermaster.peru@gmail.com"));
 		//Proveedor prove=proveedorService.buscarProveedorPorId(2);
-		proveedorService.eliminarProveedor(2);
+		//proveedorService.eliminarProveedor(2);
 		//productoService.registrarProducto(new Producto("ASUS RTX 3070", "3070","tarjeta Grafica", "Asus", "Gama Alta", 300));
 		//productoService.registrarProducto(new Producto("ASUS RTX 4060", "4060","tarjeta Grafica", "Asus", "Gama Alta", 100));
 		//productoService.eliminarProducto(2);
@@ -71,6 +87,12 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 		} else {
 			System.out.println("Usuario no encontrado en el sistema.");
 		}*/
+		//Movimiento movi = movimientos.get(1);
+
+			//System.out.println("Codigo: " + movi.getCodigo());
+			//System.out.println("Tipo Movi: " + movi.getTipoMovimiento());
+			//System.out.println("Descripcion: " + movi.getDescripcion());
+			
 	}
 
 }
