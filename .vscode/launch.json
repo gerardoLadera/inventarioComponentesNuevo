@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ProyectoInventarioDeComponentesBackendApplication<inventarioComponentesBackend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "inventarioComponentesBackend.ProyectoInventarioDeComponentesBackendApplication",
+            "projectName": "inventarioComponentesBackend",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
