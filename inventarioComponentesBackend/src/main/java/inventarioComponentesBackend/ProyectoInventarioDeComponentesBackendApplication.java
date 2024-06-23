@@ -23,17 +23,17 @@ import inventarioComponentesBackend.service.UsuarioService;
 @SpringBootApplication
 public class ProyectoInventarioDeComponentesBackendApplication implements CommandLineRunner{
 
-	@Autowired
-	private ProductoService productoService;
+	//@Autowired
+	//private ProductoService productoService;
 	
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@Autowired
-	private ProveedorService proveedorService;
+	//@Autowired
+	//private ProveedorService proveedorService;
 
-	@Autowired
-	private MovimientoService movimientoService;
+	//@Autowired
+	//private MovimientoService movimientoService;
 	
 
 
@@ -49,7 +49,7 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 		Date fecha= new Date();
 		long currentTimeMillis = System.currentTimeMillis();
 		Time hora=new Time(currentTimeMillis );
-		movimientoService.registrarMovimiento(new Movimiento("Salida",fecha, hora, "Lapto Dell","006"));
+		//movimientoService.registrarMovimiento(new Movimiento("Entrada",fecha, hora, "Lapto Toshiba","010"));
 		//movimientoService.modificarMovimiento("00001", new Movimiento("Entrada",fecha, hora, "Laptos Dell i5","003"));
 		//Movimiento movi=movimientoService.buscarMovimientoPorId("00001");
 		//List<Movimiento>movimientos=movimientoService.obtenerTodosLosMovimientos();
@@ -62,7 +62,7 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 		//productoService.registrarProducto(new Producto("ASUS RTX 4060", "4060","tarjeta Grafica", "Asus", "Gama Alta", 100));
 		//productoService.eliminarProducto(2);
 		//productoService.actualizarProducto(1, new Producto("ASUS 4090", "4090","tarjeta Grafica", "Asus", "Gama Alta", 50));
-		//usuarioService.registrarUsuario(new Usuario("21087977","USER", "CONTRASENIA","Vanesa","Ramirez","Arias","955913089", "Av Brasil 081","empleado"));
+		usuarioService.registrarUsuario(new Usuario("9999999","USER", "CONTRASENIA","Pedro","Ramirez","Arias","955913089", "Av Brasil 081","empleado"));
 		//usuarioService.actualizarUsuario("21087977", new Usuario(null,"USERri", "CONTRASENIAAAA","Ana Maria","Ladera","Arias","955913088", "La victoria",null));
 		//usuarioService.eliminarUsuario("21087977");
 		//Usuario user=usuarioService.buscarUsuario("21087930");
