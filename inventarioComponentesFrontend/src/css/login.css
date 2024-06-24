@@ -1,0 +1,67 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.bg {
+  background-image: url("../img/F_Loginn.jpeg");
+  height: 100vh; /* Ajusta la altura al 100% del viewport height */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  max-width: 400px; /* Limita el ancho máximo para mejor visualización */
+  width: 90%; /* Ajusta el ancho del contenedor */
+  margin: auto; /* Centra el contenedor horizontalmente */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.container h1 {
+  margin-bottom: 20px;
+  color: #f09586; /* Rojo vino */
+  text-align: center; /* Alinea el texto al centro */
+}
+
+.input-container {
+  margin-bottom: 15px;
+}
+
+.input-container input {
+  width: calc(50% - 12px); /* Ancho del input un poco más de la mitad */
+  padding: 8px; /* Reducción del padding */
+  margin: 5px 0;
+  border: none;
+  border-radius: 5px;
+  text-align: left; /* Alinea el texto a la izquierda dentro del input */
+  background-color: #333;
+  color: white;
+}
+
+.input-container input::placeholder {
+  text-align: left; /* Alinea el texto del placeholder a la izquierda */
+}
+
+button {
+  background-color: #c21807; /* Rojo vino */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #a60d02; /* Tonalidad más oscura del rojo vino */
+}

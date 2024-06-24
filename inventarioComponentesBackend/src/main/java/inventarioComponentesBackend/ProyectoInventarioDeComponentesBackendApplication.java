@@ -62,7 +62,7 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 		//productoService.registrarProducto(new Producto("ASUS RTX 4060", "4060","tarjeta Grafica", "Asus", "Gama Alta", 100));
 		//productoService.eliminarProducto(2);
 		//productoService.actualizarProducto(1, new Producto("ASUS 4090", "4090","tarjeta Grafica", "Asus", "Gama Alta", 50));
-		usuarioService.registrarUsuario(new Usuario("9999999","USER", "CONTRASENIA","Pedro","Ramirez","Arias","955913089", "Av Brasil 081","empleado"));
+		//usuarioService.registrarUsuario(new Usuario("9999999","USER", "CONTRASENIA","Pedro","Ramirez","Arias","955913089", "Av Brasil 081","empleado"));
 		//usuarioService.actualizarUsuario("21087977", new Usuario(null,"USERri", "CONTRASENIAAAA","Ana Maria","Ladera","Arias","955913088", "La victoria",null));
 		//usuarioService.eliminarUsuario("21087977");
 		//Usuario user=usuarioService.buscarUsuario("21087930");

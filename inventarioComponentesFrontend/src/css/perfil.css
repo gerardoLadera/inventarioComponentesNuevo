@@ -1,0 +1,21 @@
+.perfil-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.card-perfil-container {
+  flex: 1;
+  margin-right: 20px; /* Espacio entre el CardPerfil y la imagen */
+}
+
+.imagen-container {
+  flex: 1;
+}
+
+.imagen {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
