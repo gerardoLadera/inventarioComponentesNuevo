@@ -1,61 +1,75 @@
+
+
+body {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .sidebar {
-    background-color: #fceeed; /* Fondo similar al de la imagen */
-    color: #800020; /* Rojo vino */
-    height: 100vh;
-    width: 200px; /* Ajusta el ancho de la barra lateral */
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .sidebar h2 {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  
-  .sidebar hr {
-    border: 0;
-    border-top: 1px solid #800020; /* Rojo vino */
-    margin-bottom: 20px;
-  }
-  
-  .sidebar nav ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar nav ul li {
-    margin-bottom: 15px;
-  }
-  
-  .sidebar nav ul li a {
-    color: #800020; /* Rojo vino */
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .sidebar nav ul li a.active,
-  .sidebar nav ul li a:hover {
-    background-color: #ffcccb; /* Color de fondo activo */
-  }
-  
-  .sidebar nav ul li a .icon {
-    margin-right: 10px;
-  }
-  
-  .sidebar nav ul li a.active .icon,
-  .sidebar nav ul li a:hover .icon {
-    color: #800020; /* Color del icono activo */
-  }
-  
-  /* LinkButton styling */
-  .link-button {
-    display: flex;
-    align-items: center;
-  }
-  
-  .link-button img {
-    margin-right: 10px; /* Espacio entre la imagen y el texto */
-  }
+  background-color: #fceeed; /* Fondo similar al de la imagen */
+  color: #800020; /* Rojo vino */
+  height: 100vh;
+  width: 360px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Fijar la barra lateral */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 1rem 1rem 0;
+}
+
+.sidebar h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.link {
+  color: #800020;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  font-size: 20px;
+  margin: 0.5rem 0;
+  gap: 1rem;
+  transition: all ease-in-out 0.2s;
+  text-decoration: none;
+}
+
+.link:hover,
+.link.active {
+  color: #484042; /* Color gris */
+  cursor: pointer;
+  border-left: 5px solid #800020;
+  background-color: #e89d9c; /* Color de fondo activo */
+}
+
+.link img {
+  width: 20px;
+}
+
+.sidebar hr {
+  border: 0;
+  border-top: 7px solid #800020; /* Rojo vino */
+  margin-bottom: 20px;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  margin-bottom: 5px;
+}
+
+.section {
+  margin-left: 360px; /* Ajustar margen izquierdo para el contenido principal */
+  padding: 20px;
+  overflow-y: auto;
+  width: calc(100% - 360px); /* Ajustar el ancho del contenido principal */
+  height: 100vh;
+}
+
+

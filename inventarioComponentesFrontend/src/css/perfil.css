@@ -1,22 +1,28 @@
 .perfil-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-top: 20px;
-  margin-left: 500px; /* Ajusta este valor para la separación deseada desde el borde superior */
+  height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Ajusta este valor para la separación deseada desde el borde superior */
 }
 
 .card-perfil-container {
-  flex: 1;
-  margin-right: 20px; /* Espacio entre el CardPerfil y la imagen */
+  width: 100%; 
+  margin:65px 40px 40px 50px; /* Espacio entre el CardPerfil y la imagen */
 }
 
-.imagen-container {
-  flex: 1;
-}
+
 
 .imagen {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
+  width: 40%;
+  height: 60%;
+  border-radius: 16px; 
+  box-shadow: 1px 1px 10px #cdcdcd;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  margin: 140px 30px;
+  top: 0;
+  right: 0;
 }

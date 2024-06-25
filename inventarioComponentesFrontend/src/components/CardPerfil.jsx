@@ -3,7 +3,8 @@ import adminIcon from "../img/adminIcon.png";
 import empleadoIcon from "../img/emepleadoIcon.png";
 import '../css/cardPerfil.css'; // Archivo CSS para estilos específicos del componente
 
-export default function CardPerfil({ usuario }) {
+
+export default function CardPerfil({ usuario }) {  
   return (
     <div className="card-perfil">
       {usuario && (
