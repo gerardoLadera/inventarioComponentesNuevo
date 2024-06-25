@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { login } from '../data/apiUsuarios';
 import { useNavigate } from "react-router-dom"
+import { useUser } from '../contexts/UserContext';
 import '../css/login.css';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [usuario, setUsuario] = useState(null);
+  const { setUsuario } = useUser();
   const navigator = useNavigate();
 
   const handleLogin = async () => {
@@ -17,7 +18,7 @@ export default function Login() {
       alert('Inicio de sesión exitoso');
       setUsuario(result.data);
       // Redirigimos dependiendo el rol de usuario
-      navigator('/perfil', { state: { usuario: result.data } });
+      navigator('/sgi')
     } else {
       alert(result.message);
     }

@@ -1,11 +1,13 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import CardPerfil from '../components/CardPerfil';
+import { useUser } from '../contexts/UserContext';
 import '../css/perfil.css'; // Estilos específicos de la página de perfil
 
-const Perfil = () => {
-  const location = useLocation();
-  const usuario = location.state?.usuario || null;
+export default function Perfil (){
+  const { usuario } = useUser();
+  //const location = useLocation();
+  //const usuario = location.state?.usuario || null;
 
   return (
     <div className="perfil-container">
@@ -17,6 +19,5 @@ const Perfil = () => {
       </div>
     </div>
   );
-};
+}
 
-export default Perfil;

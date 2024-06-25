@@ -1,0 +1,61 @@
+.sidebar {
+    background-color: #fceeed; /* Fondo similar al de la imagen */
+    color: #800020; /* Rojo vino */
+    height: 100vh;
+    width: 200px; /* Ajusta el ancho de la barra lateral */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar hr {
+    border: 0;
+    border-top: 1px solid #800020; /* Rojo vino */
+    margin-bottom: 20px;
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar nav ul li {
+    margin-bottom: 15px;
+  }
+  
+  .sidebar nav ul li a {
+    color: #800020; /* Rojo vino */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .sidebar nav ul li a.active,
+  .sidebar nav ul li a:hover {
+    background-color: #ffcccb; /* Color de fondo activo */
+  }
+  
+  .sidebar nav ul li a .icon {
+    margin-right: 10px;
+  }
+  
+  .sidebar nav ul li a.active .icon,
+  .sidebar nav ul li a:hover .icon {
+    color: #800020; /* Color del icono activo */
+  }
+  
+  /* LinkButton styling */
+  .link-button {
+    display: flex;
+    align-items: center;
+  }
+  
+  .link-button img {
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+  }

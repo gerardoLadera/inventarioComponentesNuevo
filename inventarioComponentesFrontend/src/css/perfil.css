@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px;
+  padding-top: 20px;
+  margin-left: 500px; /* Ajusta este valor para la separación deseada desde el borde superior */
 }
 
 .card-perfil-container {

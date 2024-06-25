@@ -1,31 +1,45 @@
 .card-perfil {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    color: white;
-    margin: 20px;
-  }
-  
-  .avatar-container {
-    margin-bottom: 20px;
-  }
-  
-  .avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 2px solid #C21807; /* Rojo vino */
-  }
-  
-  .info-container {
-    text-align: left;
-  }
-  
-  .info-container h2 {
-    color: #C21807; /* Rojo vino */
-  }
-  
-  .info-container p {
-    margin: 10px 0;
-  }
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  padding-bottom: 85px; /* Aumentar el padding inferior */
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 550px; /* Aumentar la altura del componente */
+}
+
+.avatar-container {
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 170px; /* Tamaño aumentado */
+  height: 170px; /* Tamaño aumentado */
+  border-radius: 50%;
+  border: 6px solid #771e32; /* Borde más grueso */
+}
+
+.info-container {
+  text-align: center; /* Texto centrado */
+}
+
+.info-container h2 {
+  color: #f2ecee; /* Rojo vino */
+  margin-bottom: 15px; /* Espaciado entre nombre y otros textos */
+  font-size: 2em;
+}
+
+.info-container p {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+
+.attribute-name {
+  color: #e29faf; /* Rojo vino para el nombre de los atributos */
+  font-weight: bold; /* Texto más grueso */
+}
