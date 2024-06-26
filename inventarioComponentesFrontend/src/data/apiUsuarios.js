@@ -16,3 +16,13 @@ export const login = async (credentials) => {
     }
   }
 };
+
+export const obtenerUsuarios = async () => {
+  try {
+    const response = await axios.get('http://localhost:8080/api/usuarios/usuarios');
+    return response.data;
+  } catch (error) {
+    console.error('Error al obtener los usuarios:', error);
+    throw error;
+  }
+};

@@ -1,0 +1,23 @@
+.barra-dias {
+    padding: 0.7rem;
+    background-color: #800020;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 1rem;
+}
+.day{
+    background-color: rgb(233, 191, 191);
+    border-radius: 8%;
+    cursor: pointer;
+    text-align: center;
+    padding: 0.3rem;
+    line-height: 2rem;
+    font-weight: bold;
+    transition: all ease-in-out .3s;
+}
+
+.day:hover, .day.active{
+    background-color: #b35a5a;
+    border-radius: 8%;
+    color: white;
+}

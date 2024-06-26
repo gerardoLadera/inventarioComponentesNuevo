@@ -7,6 +7,7 @@ import iconoProve from "../img/iconoProve.png";
 import iconoInvent from "../img/iconoInvent.png";
 import iconoMovi from "../img/iconoMovi.png";
 import iconoPedido from "../img/iconoPedido.png";
+import iconoUser from "../img/iconoUser.png";
 import { useUser } from '../contexts/UserContext';
 import LinkButton from '../components/LinkButton';
 import SGIIcon from "../img/SGIIcon.png";
@@ -37,6 +38,13 @@ export default function BarraLateral() {
                 </Link>
               </li>
               <li>
+                <Link to="/sgi/usuarios">
+                  <LinkButton active={location.pathname === '/sgi/usuarios'} img={iconoUser}>
+                    Usuarios
+                  </LinkButton>
+                </Link>
+              </li>
+              <li>
                 <Link to="/usuarios">
                   <LinkButton active={location.pathname === '/usuarios'} img={iconoEmple}>
                     Empleados
@@ -46,7 +54,7 @@ export default function BarraLateral() {
               <li>
                 <Link to="/empleados">
                   <LinkButton active={location.pathname === '/empleados'} img={iconoProve}>
-                    Proveedor
+                    Proveedores
                   </LinkButton>
                 </Link>
               </li>
