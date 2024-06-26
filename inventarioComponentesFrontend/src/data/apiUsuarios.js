@@ -26,3 +26,13 @@ export const obtenerUsuarios = async () => {
     throw error;
   }
 };
+
+export const registrarUsuario = async (usuario) => {
+  try {
+    const response = await axios.post('http://localhost:8080/api/usuarios/registrar', usuario);
+    return response.data;
+  } catch (error) {
+    console.error('Error al registrar el usuario:', error);
+    throw error;
+  }
+};

@@ -45,13 +45,6 @@ export default function BarraLateral() {
                 </Link>
               </li>
               <li>
-                <Link to="/usuarios">
-                  <LinkButton active={location.pathname === '/usuarios'} img={iconoEmple}>
-                    Empleados
-                  </LinkButton>
-                </Link>
-              </li>
-              <li>
                 <Link to="/empleados">
                   <LinkButton active={location.pathname === '/empleados'} img={iconoProve}>
                     Proveedores

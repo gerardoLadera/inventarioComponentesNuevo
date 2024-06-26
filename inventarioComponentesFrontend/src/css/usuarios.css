@@ -2,6 +2,11 @@
     margin: 20px;
   }
   
+
+  .usuarios-container h2{
+    margin-bottom: 10px;
+    font-size: 40px;
+  }
   .usuarios-table {
     width: 100%;
     border-collapse: collapse;
