@@ -1,7 +1,7 @@
 .card-perfil {
   background-color: rgba(0, 0, 0, 0.6);
-  padding: 20px;
-  padding-bottom: 85px; /* Aumentar el padding inferior */
+  padding: 40px;
+  padding-bottom: 90px; /* Aumentar el padding inferior */
   border-radius: 10px;
   text-align: center;
   color: white;
@@ -10,7 +10,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 550px; /* Aumentar la altura del componente */
+  height: 100%;
+  /* Aumentar la altura del componente */
 }
 
 .avatar-container {

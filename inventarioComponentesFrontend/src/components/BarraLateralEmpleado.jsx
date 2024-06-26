@@ -10,7 +10,6 @@ import iconoPedido from "../img/iconoPedido.png";
 import { useUser } from '../contexts/UserContext';
 import LinkButton from '../components/LinkButton';
 import SGIIcon from "../img/SGIIcon.png";
-
 export default function BarraLateral() {
   const location = useLocation();
   const { usuario } = useUser();
@@ -46,7 +45,7 @@ export default function BarraLateral() {
               <li>
                 <Link to="/empleados">
                   <LinkButton active={location.pathname === '/empleados'} img={iconoProve}>
-                    Proveedor
+                    Proveedores
                   </LinkButton>
                 </Link>
               </li>
@@ -79,5 +78,4 @@ export default function BarraLateral() {
         </section>
       </div>
   );
-}
-
+}   

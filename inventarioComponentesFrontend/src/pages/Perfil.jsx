@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import CardPerfil from '../components/CardPerfil';
 import { useUser } from '../contexts/UserContext';
+import cajas_Perfil from "../img/cajas_Perfil.png";
 import '../css/perfil.css'; // Estilos específicos de la página de perfil
 
 export default function Perfil (){
@@ -12,10 +13,10 @@ export default function Perfil (){
   return (
     <div className="perfil-container">
       <div className="card-perfil-container">
-        {usuario && <CardPerfil usuario={usuario} />}
+         <CardPerfil usuario={usuario} />
       </div>
       <div className="imagen-container">
-        <img src="/img/ejemplo-imagen.jpg" alt="Imagen de ejemplo" className="imagen" />
+        <img src={cajas_Perfil} alt="Imagen de ejemplo" className="imagen" />
       </div>
     </div>
   );

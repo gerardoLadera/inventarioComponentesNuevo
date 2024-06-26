@@ -3,26 +3,27 @@
     width: 100%;
     overflow: hidden;
     display: flex;
-    flex-direction: column; /* Ajusta este valor para la separación deseada desde el borde superior */
+    flex-direction: column;
 }
 
 .card-perfil-container {
-  width: 100%; 
-  margin:65px 40px 40px 50px; /* Espacio entre el CardPerfil y la imagen */
+  width: 50%; 
+  border-radius: 16px;
+
 }
 
 
 
 .imagen {
-  width: 40%;
-  height: 60%;
+  width: 30%;
+  height: 50%;
   border-radius: 16px; 
-  box-shadow: 1px 1px 10px #cdcdcd;
   display: flex;
   justify-content: center;
   flex-direction: column;
   position: absolute;
   margin: 140px 30px;
+  margin-right: 80px;
   top: 0;
   right: 0;
 }

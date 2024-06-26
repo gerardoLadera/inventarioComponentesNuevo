@@ -22,6 +22,7 @@ body {
 .sidebar h2 {
   font-size: 30px;
   margin-bottom: 20px;
+  margin-left: 10px;
 }
 
 .link {
@@ -46,7 +47,7 @@ body {
 }
 
 .link img {
-  width: 20px;
+  width: 30px;
 }
 
 .sidebar hr {
@@ -62,6 +63,13 @@ body {
 
 .sidebar nav ul li {
   margin-bottom: 5px;
+}
+
+.sgi-icon {
+  width: 70px; /* Ajusta el tamaño según sea necesario */
+  height: 70px; /* Ajusta el tamaño según sea necesario */
+  margin-right: 15px; /* Espacio entre la imagen y el texto */
+  vertical-align: middle; /* Alinea la imagen con el texto */
 }
 
 .section {
