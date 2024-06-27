@@ -71,7 +71,7 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("buscar/{dni}")
+    @GetMapping("/buscar/{dni}")
     public ResponseEntity<Usuario> buscarUsuarioPorDni(@PathVariable String dni) {
         Usuario usuario = usuarioService.buscarUsuario(dni);
         if (usuario != null) {

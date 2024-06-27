@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import '../css/formCrearUsuario.css'; // Importa el archivo CSS para los estilos
-import { registrarUsuario } from '../data/apiUsuarios';
-export default function FormRegistroUsuario({ onClose, onUsuarioCreado }) {
+import { registrarUsuario,actualizarUsuario } from '../data/apiUsuarios';
+export default function FormRegistroUsuario({ onClose, onUsuarioCreado, onUsuarioActualizado,usuarioActualizar }) {
   const [form, setForm] = useState({
     dni: '',
     username: '',
@@ -14,6 +14,12 @@ export default function FormRegistroUsuario({ onClose, onUsuarioCreado }) {
     rol: 'empleado'
   });
 
+  useEffect(() => {
+    if (usuarioActualizar) {
+      setForm(usuarioActualizar);
+    }
+  }, [usuarioActualizar]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({
@@ -22,26 +28,37 @@ export default function FormRegistroUsuario({ onClose, onUsuarioCreado }) {
     });
   };
 
+  const [error, setError] = useState('');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (form.dni.length !== 8) {
+      setError('El DNI debe tener exactamente 8 cifras.');
+      return;
+    }
     try {
-      const nuevoUsuario = await registrarUsuario(form);
-      onUsuarioCreado(nuevoUsuario);
+      if (usuarioActualizar) {
+        const usuarioActualizado = await actualizarUsuario(form);
+        onUsuarioActualizado(usuarioActualizado);
+      } else {
+        const nuevoUsuario = await registrarUsuario(form);
+        onUsuarioCreado(nuevoUsuario);
+      }
       onClose();
     } catch (error) {
       console.error('Error al registrar el usuario:', error);
-      // Manejo de errores, muestra un mensaje al usuario si es necesario
-    }
-  };
+  }
+};
 
 return (
     <div className="modal-overlay">
         <div className="modal-content">
-            <h2>Crear Usuario</h2>
+            <h2>{usuarioActualizar ? 'Actualizar Usuario' : 'Crear Usuario'}</h2>
+            {error && <div className="error-message">{error}</div>}
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                 <label>DNI</label>
-                <input type="text" name="dni" value={form.dni} onChange={handleChange} required />
+                <input type="text" name="dni" value={form.dni} onChange={handleChange} disabled={usuarioActualizar ? true : false} required />
                 </div>
                 <div className="form-group">
                 <label>Usuario</label>
@@ -78,7 +95,7 @@ return (
                     <option value="administrador">Administrador</option>
                 </select>
                 </div>
-                <button type="submit">Crear</button>
+                <button type="submit">{usuarioActualizar ? 'Actualizar' : 'Crear'}</button>
                 <button type="button" onClick={onClose}>Cancelar</button>
             </form>
         </div>

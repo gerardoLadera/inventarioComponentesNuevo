@@ -14,15 +14,15 @@ import jakarta.persistence.Table;
 public class Producto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String id;
+
     private String nombre;
     private String modelo;
     private String tipo;
     private String marca;
     private String descripcion;
     private int stock;
-    private String estado;
+    
 
     // Constructor sin parámetros requerido por JPA
     public Producto() {
@@ -40,11 +40,11 @@ public class Producto {
 
 
     // Getters y setters
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -96,11 +96,5 @@ public class Producto {
         this.stock = stock;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }  
+  
 }

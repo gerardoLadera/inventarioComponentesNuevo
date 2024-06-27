@@ -7,15 +7,15 @@ public interface ProductoService {
 
     void registrarProducto(Producto producto);
 
-    Producto buscarProducto(int id);
+    Producto buscarProducto(String id);
 
-    boolean eliminarProducto(int idProducto);
+    boolean eliminarProducto(String idProducto);
 
-    Producto verDetalleProducto(int id);
+    Producto verDetalleProducto(String id);
 
     List<Producto> obtenerTodosLosProductos();
 
     void cargarProductosDesdeBaseDeDatos();
 
-    void actualizarProducto(int id, Producto producto);
+    void actualizarProducto(String id, Producto productoActualizado);
 }

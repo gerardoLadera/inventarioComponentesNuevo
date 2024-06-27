@@ -23,14 +23,14 @@ import inventarioComponentesBackend.service.UsuarioService;
 @SpringBootApplication
 public class ProyectoInventarioDeComponentesBackendApplication implements CommandLineRunner{
 
+	@Autowired
+	private ProductoService productoService;
+	
 	//@Autowired
-	//private ProductoService productoService;
+	//private UsuarioService usuarioService;
 	
 	@Autowired
-	private UsuarioService usuarioService;
-	
-	//@Autowired
-	//private ProveedorService proveedorService;
+	private ProveedorService proveedorService;
 
 	//@Autowired
 	//private MovimientoService movimientoService;
@@ -56,11 +56,11 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 		//movimientoService.eliminarMovimiento("00002");
 		//proveedorService.agregarProveedor(new Proveedor("CoolerMaster", "SanIsidro","97105020","coolermaster.peru@gmail.com"));
 		//proveedorService.actualizarProveedor(2, new Proveedor("CoolerMaster", "Miraflores","97105020","coolermaster.peru@gmail.com"));
-		//Proveedor prove=proveedorService.buscarProveedorPorId(2);
+		//Proveedor prove=proveedorService.buscarProveedorPorNombre("Asus");
 		//proveedorService.eliminarProveedor(2);
 		//productoService.registrarProducto(new Producto("ASUS RTX 3070", "3070","tarjeta Grafica", "Asus", "Gama Alta", 300));
-		//productoService.registrarProducto(new Producto("ASUS RTX 4060", "4060","tarjeta Grafica", "Asus", "Gama Alta", 100));
-		//productoService.eliminarProducto(2);
+		productoService.registrarProducto(new Producto("ASUS RTX 4060", "4060","tarjeta Grafica", "Asus", "Gama Alta", 100));
+		//productoService.eliminarProducto("001");
 		//productoService.actualizarProducto(1, new Producto("ASUS 4090", "4090","tarjeta Grafica", "Asus", "Gama Alta", 50));
 		//usuarioService.registrarUsuario(new Usuario("91020181","user", "contra","Mario","Casas","Arias","955913190", "San Isidro 081","administrador"));
 		//usuarioService.actualizarUsuario("21087977", new Usuario(null,"USERri", "CONTRASENIAAAA","Ana Maria","Ladera","Arias","955913088", "La victoria",null));
@@ -74,7 +74,7 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 		if (empleados !=null) {
 			// Obtener el primer empleado
 			Usuario user = empleados.get(1);
-		
+			
 			// Imprimir los datos del primer empleado
 			System.out.println("DNI: " + user.getDni());
 			System.out.println("Username: " + user.getUsername());
@@ -92,7 +92,7 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 			//System.out.println("Codigo: " + movi.getCodigo());
 			//System.out.println("Tipo Movi: " + movi.getTipoMovimiento());
 			//System.out.println("Descripcion: " + movi.getDescripcion());
-			
+			//System.out.println(prove.getTelefono());
 	}
 
 }

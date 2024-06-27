@@ -2,7 +2,7 @@ package inventarioComponentesBackend.service.impl;
 
 import java.util.LinkedList;
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +14,12 @@ import jakarta.annotation.PostConstruct;
 
 @Service
 public class ProductoServiceImpl implements ProductoService{
+    @Autowired
+    private ProductoRepository productoRepository;
 
     private Nodo lista;
     
-    @Autowired
-    private ProductoRepository productoRepository;
+    
 
 
     private class Nodo {
@@ -38,7 +39,10 @@ public class ProductoServiceImpl implements ProductoService{
     // Método para agregar un producto a la lista enlazada 
     @Override
     public void registrarProducto(Producto producto) {
-        Nodo nuevoNodo = new Nodo(producto);
+        if (producto.getId() == null || producto.getId().isEmpty()) {
+            producto.setId(generarNuevoCodigo());
+        }
+        Nodo nuevoNodo = new Nodo(producto);  
         Nodo temp = lista;
         if (lista == null) {
             lista = nuevoNodo;
@@ -52,10 +56,10 @@ public class ProductoServiceImpl implements ProductoService{
     }
     // Método para buscar un producto por ID en la lista de productos
     @Override
-    public Producto buscarProducto(int id) {
+    public Producto buscarProducto(String id) {
         Nodo temp = lista;
         while (temp != null) {
-            if (temp.producto.getId()==(id)) {
+            if (temp.producto.getId().equals(id)) {
                 return temp.producto;
             }
             temp = temp.sgte;
@@ -65,11 +69,11 @@ public class ProductoServiceImpl implements ProductoService{
 
     // Método para eliminar un producto de la lista enlazada
     @Override
-    public boolean eliminarProducto(int idProducto) {
+    public boolean eliminarProducto(String idProducto) {
         if (lista == null) {
             return false;
         }
-        if (lista.producto.getId()== idProducto) {
+        if (lista.producto.getId().equals(idProducto)) {
             Producto productoAEliminar = lista.producto;
             lista= lista.sgte;
             productoRepository.delete(productoAEliminar);
@@ -77,7 +81,7 @@ public class ProductoServiceImpl implements ProductoService{
         }
         Nodo temp = lista;
         while (temp.sgte != null) {
-            if (temp.sgte.producto.getId()== idProducto) {
+            if (temp.sgte.producto.getId().equals(idProducto)) {
                 Producto productoAEliminar = temp.sgte.producto;
                 temp.sgte = temp.sgte.sgte;
                 productoRepository.delete(productoAEliminar);
@@ -98,7 +102,7 @@ public class ProductoServiceImpl implements ProductoService{
 
     // Método para ver el detalle de un producto
     @Override
-    public Producto verDetalleProducto(int id) {
+    public Producto verDetalleProducto(String id) {
         Producto producto = buscarProducto(id);
         if (producto != null) {
             return producto;
@@ -118,11 +122,11 @@ public class ProductoServiceImpl implements ProductoService{
         }
         return listaProductos;
     }
-
-    public void actualizarProducto(int id, Producto productoActualizado) {
+    @Override
+    public void actualizarProducto(String id, Producto productoActualizado) {
         Nodo temp = lista;
         while (temp != null) {
-            if (temp.producto.getId()== id) {
+            if (temp.producto.getId().equals(id)) {
                 temp.producto.setNombre(productoActualizado.getNombre());
                 temp.producto.setModelo(productoActualizado.getModelo());
                 temp.producto.setTipo(productoActualizado.getTipo());
@@ -135,6 +139,17 @@ public class ProductoServiceImpl implements ProductoService{
             temp = temp.sgte;
         }
         throw new IllegalArgumentException("Producto no encontrado");
+    }
+
+
+    private String generarNuevoCodigo() {
+        Optional<Producto> ultimoProducto = productoRepository.findTopByOrderByIdDesc();
+        if (ultimoProducto.isPresent()) {
+            int ultimoId = Integer.parseInt(ultimoProducto.get().getId());
+            return String.format("%03d", ultimoId + 1);
+        } else {
+            return "001";
+        }
     }
 
 

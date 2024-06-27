@@ -10,7 +10,7 @@ public interface ProveedorService {
 
     List<Proveedor> obtenerProveedores();
 
-    Proveedor buscarProveedorPorId(int id);
+    Proveedor buscarProveedorPorNombre(String nombre);
 
     boolean eliminarProveedor(int idProveedor);
 

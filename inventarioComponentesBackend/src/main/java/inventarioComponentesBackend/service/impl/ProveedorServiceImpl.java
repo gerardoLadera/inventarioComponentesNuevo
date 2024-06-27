@@ -50,10 +50,10 @@ private class Nodo {
     }
 
     @Override
-    public Proveedor buscarProveedorPorId(int id) {
+    public Proveedor buscarProveedorPorNombre(String nombre) {
         Nodo temp = listaProveedores;
         while (temp != null) {
-            if (temp.proveedor.getId() == id) {
+            if (temp.proveedor.getNombre().equals(nombre)) {
                 return temp.proveedor;
             }
             temp = temp.sgte;

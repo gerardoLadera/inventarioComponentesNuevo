@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Login from "./pages/Login";
 import Perfil from "./pages/Perfil";
 import Index from "./pages/Index";
-
+import Proveedores from "./pages/Proveedores";
 import Usuarios from "./pages/Usuarios";
 import RouterWrapper from "./components/RouterWrapper";
 
@@ -24,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: '/sgi/usuarios', // Nueva ruta para Usuarios
         element: <Usuarios />,
+      },
+      {
+        path: '/sgi/proveedores', // Nueva ruta para Usuarios
+        element: <Proveedores />,
       },
       // Agrega más rutas aquí según sea necesario
     ],

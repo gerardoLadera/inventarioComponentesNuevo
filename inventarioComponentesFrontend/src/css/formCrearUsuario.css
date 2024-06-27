@@ -24,7 +24,10 @@
   .form-group {
     margin-bottom: 10px; /* Reducir el espacio inferior de los grupos de formularios */
   }
-  
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
+  }
   .form-group label {
     display: block;
     margin-bottom: 3px; /* Reducir el espacio inferior de las etiquetas */

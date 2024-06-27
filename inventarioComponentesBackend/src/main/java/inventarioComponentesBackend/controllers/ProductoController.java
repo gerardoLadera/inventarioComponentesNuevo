@@ -38,7 +38,7 @@ public class ProductoController {
 
     // Endpoint para buscar un producto por ID
     @GetMapping("/buscar/{id}")
-    public ResponseEntity<Producto> buscarProducto(@PathVariable int id) {
+    public ResponseEntity<Producto> buscarProducto(@PathVariable String id) {
         Producto producto = productoService.buscarProducto(id);
         if (producto != null) {
             return ResponseEntity.ok(producto);
@@ -49,7 +49,7 @@ public class ProductoController {
 
     // Endpoint para eliminar un producto por ID
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Void> eliminarProducto(@PathVariable int id) {
+    public ResponseEntity<Void> eliminarProducto(@PathVariable String id) {
         boolean eliminado = productoService.eliminarProducto(id);
         if (eliminado) {
             return ResponseEntity.ok().build();
@@ -60,7 +60,7 @@ public class ProductoController {
 
     // Endpoint para ver el detalle de un producto por ID
     @GetMapping("/detalle/{id}")
-    public ResponseEntity<Producto> verDetalleProducto(@PathVariable int id) {
+    public ResponseEntity<Producto> verDetalleProducto(@PathVariable String id) {
         Producto producto = productoService.verDetalleProducto(id);
         if (producto != null) {
             return ResponseEntity.ok(producto);
@@ -71,7 +71,7 @@ public class ProductoController {
 
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Producto> actualizarProducto(@PathVariable int id, @RequestBody Producto productoActualizado) {
+    public ResponseEntity<Producto> actualizarProducto(@PathVariable String id, @RequestBody Producto productoActualizado) {
         try {
             productoService.actualizarProducto(id, productoActualizado);
             return ResponseEntity.ok(productoActualizado);
