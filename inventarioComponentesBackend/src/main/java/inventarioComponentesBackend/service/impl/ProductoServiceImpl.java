@@ -1,7 +1,9 @@
 package inventarioComponentesBackend.service.impl;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -150,6 +152,20 @@ public class ProductoServiceImpl implements ProductoService{
         } else {
             return "001";
         }
+    }
+
+    @Override
+    public List<Producto> obtenerProductosPorTipo(String tipo) {
+        Map<String, List<Producto>> productosPorTipoMap = new HashMap<>();
+        List<Producto> listaProductos = obtenerTodosLosProductos();
+
+        for (Producto producto : listaProductos) {
+            String tipoProducto = producto.getTipo();
+            productosPorTipoMap.putIfAbsent(tipoProducto, new LinkedList<>());
+            productosPorTipoMap.get(tipoProducto).add(producto);
+        }
+
+        return productosPorTipoMap.getOrDefault(tipo, new LinkedList<>());
     }
 
 

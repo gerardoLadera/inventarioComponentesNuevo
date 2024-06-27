@@ -1,6 +1,8 @@
 package inventarioComponentesBackend.service;
 
 import java.util.List;
+import java.util.Map;
+
 import inventarioComponentesBackend.model.Producto;
 
 public interface ProductoService {
@@ -16,6 +18,8 @@ public interface ProductoService {
     List<Producto> obtenerTodosLosProductos();
 
     void cargarProductosDesdeBaseDeDatos();
+
+    List<Producto> obtenerProductosPorTipo(String tipo);
 
     void actualizarProducto(String id, Producto productoActualizado);
 }

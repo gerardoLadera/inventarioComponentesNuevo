@@ -12,10 +12,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import inventarioComponentesBackend.model.Movimiento;
+import inventarioComponentesBackend.model.PedidoProveedor;
 import inventarioComponentesBackend.model.Producto;
 import inventarioComponentesBackend.model.Proveedor;
 import inventarioComponentesBackend.model.Usuario;
 import inventarioComponentesBackend.service.MovimientoService;
+import inventarioComponentesBackend.service.PedidoProveedorService;
 import inventarioComponentesBackend.service.ProductoService;
 import inventarioComponentesBackend.service.ProveedorService;
 import inventarioComponentesBackend.service.UsuarioService;
@@ -32,6 +34,8 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 	@Autowired
 	private ProveedorService proveedorService;
 
+	@Autowired
+	private PedidoProveedorService pedidoProveedorService;
 	//@Autowired
 	//private MovimientoService movimientoService;
 	
@@ -59,18 +63,21 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 		//Proveedor prove=proveedorService.buscarProveedorPorNombre("Asus");
 		//proveedorService.eliminarProveedor(2);
 		//productoService.registrarProducto(new Producto("ASUS RTX 3070", "3070","tarjeta Grafica", "Asus", "Gama Alta", 300));
-		productoService.registrarProducto(new Producto("ASUS RTX 4060", "4060","tarjeta Grafica", "Asus", "Gama Alta", 100));
+		//productoService.registrarProducto(new Producto("ASUS RTX 4060", "4060","tarjeta Grafica", "Asus", "Gama Alta", 100));
 		//productoService.eliminarProducto("001");
+		//List<Producto> tarjetas=productoService.obtenerProductosPorTipo("Tarjeta Gráfica");
 		//productoService.actualizarProducto(1, new Producto("ASUS 4090", "4090","tarjeta Grafica", "Asus", "Gama Alta", 50));
 		//usuarioService.registrarUsuario(new Usuario("91020181","user", "contra","Mario","Casas","Arias","955913190", "San Isidro 081","administrador"));
 		//usuarioService.actualizarUsuario("21087977", new Usuario(null,"USERri", "CONTRASENIAAAA","Ana Maria","Ladera","Arias","955913088", "La victoria",null));
 		//usuarioService.eliminarUsuario("21087977");
+		//pedidoProveedorService.registrarPedidoProveedor(new PedidoProveedor(4,"91020181", "001", 10, fecha, hora));
 		//Usuario user=usuarioService.buscarUsuario("21087930");
 		//usuarioService.sincronizarCambiosConBaseDeDatos();
 		//System.out.println("ID: " + prove.getId());
 		//System.out.println("Nombre: " + prove.getNombre());
 		//System.out.println("Corre: " + prove.getCorreo());
 		/*List<Usuario> empleados = usuarioService.obtenerEmpleados();
+		
 		if (empleados !=null) {
 			// Obtener el primer empleado
 			Usuario user = empleados.get(1);
@@ -88,7 +95,8 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 			System.out.println("Usuario no encontrado en el sistema.");
 		}*/
 		//Movimiento movi = movimientos.get(1);
-
+		//Producto producto = tarjetas.get(0);
+		//System.out.println("Id: " + producto.getId());
 			//System.out.println("Codigo: " + movi.getCodigo());
 			//System.out.println("Tipo Movi: " + movi.getTipoMovimiento());
 			//System.out.println("Descripcion: " + movi.getDescripcion());

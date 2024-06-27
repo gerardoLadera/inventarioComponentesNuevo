@@ -141,7 +141,7 @@ const handleFiltrarPorRol = async (rol) => {
                   <td>{usuario.nombre}</td>
                   <td>{usuario.rol}</td>
                   <td>
-                    <button onClick={() => handleActualizarClick(usuario)}>Actualizar</button>
+                    <button className='button-actualizar'  onClick={() => handleActualizarClick(usuario)}>Actualizar</button>
                     <button onClick={() => handleEliminarUsuario(usuario.dni)}>Eliminar</button>
                   </td>
                 </tr>

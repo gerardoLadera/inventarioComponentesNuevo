@@ -52,8 +52,8 @@ export default function BarraLateral() {
                 </Link>
               </li>
               <li>
-                <Link to="/proveedores">
-                  <LinkButton active={location.pathname === '/proveedores'} img={iconoInvent}>
+                <Link to="/sgi/inventario">
+                  <LinkButton active={location.pathname === '/sgi/inventario'} img={iconoInvent}>
                     Inventario
                   </LinkButton>
                 </Link>

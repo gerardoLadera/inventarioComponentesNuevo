@@ -16,6 +16,12 @@
   .usuarios-header button {
     margin-right: 10px;
   }
+  .button-actualizar{
+    background-color: #1550ce;
+  }
+  .button-actualizar:hover{
+    background-color: #183f92;
+  }
   
   .busqueda-container {
     display: flex;

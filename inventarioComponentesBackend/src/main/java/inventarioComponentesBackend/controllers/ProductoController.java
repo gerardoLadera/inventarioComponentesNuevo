@@ -2,8 +2,10 @@ package inventarioComponentesBackend.controllers;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +20,7 @@ import inventarioComponentesBackend.service.ProductoService;
 
 @RestController
 @RequestMapping("/api/productos")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ProductoController {
 
     @Autowired
@@ -30,7 +33,7 @@ public class ProductoController {
     }
 
     // Endpoint para obtener todos los productos (mostrar productos)
-    @GetMapping("/todos")
+    @GetMapping("/productos")
     public ResponseEntity<List<Producto>> obtenerTodosLosProductos() {
         List<Producto> productos = productoService.obtenerTodosLosProductos();
         return ResponseEntity.ok(productos);
@@ -78,6 +81,13 @@ public class ProductoController {
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+
+    @GetMapping("/clasificar/{tipo}")
+    public ResponseEntity<List<Producto>> obtenerProductosPorTipo(@PathVariable String tipo) {
+        List<Producto> productos = productoService.obtenerProductosPorTipo(tipo);
+        return ResponseEntity.ok(productos);
     }
 
 

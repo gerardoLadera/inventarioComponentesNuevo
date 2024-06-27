@@ -115,7 +115,7 @@ export default function Proveedores() {
                   <td>{proveedor.correo}</td>
                   <td>{proveedor.direccion}</td>
                   <td>
-                    <button onClick={() => handleActualizarClick(proveedor)}>Actualizar</button>
+                    <button className='button-actualizar'  onClick={() => handleActualizarClick(proveedor)}>Actualizar</button>
                     <button onClick={() => handleEliminarProveedor(proveedor.id)}>Eliminar</button>
                   </td>
                 </tr>

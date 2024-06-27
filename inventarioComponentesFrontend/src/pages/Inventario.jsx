@@ -1,8 +1,9 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import FormRegistroProducto from '../components/FormRegistroProducto';
+import ModalDetalleProducto from '../components/ModalVerDetalle';
 import { obtenerProductos, obtenerProductoPorId, actualizarProducto, eliminarProducto, obtenerProductosPorTipo } from '../data/apiProductos';
-import '../css/inventario.css'; // Importa el archivo CSS para los estilos
+import '../css/usuarios.css'; // Importa el archivo CSS para los estilos
 import lupa from '../img/lupaIcon.png';
 
 export default function Inventario() {
@@ -10,6 +11,7 @@ export default function Inventario() {
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
     const [busquedaId, setBusquedaId] = useState('');
     const [productoActualizar, setProductoActualizar] = useState(null);
+    const [productoDetalle, setProductoDetalle] = useState(null);
 
     useEffect(() => {
         const fetchProductos = async () => {
@@ -78,10 +80,14 @@ export default function Inventario() {
         }
     };
 
+    const handleVerDetalleProducto = (producto) => {
+        setProductoDetalle(producto);
+    };
+
     return (
-        <div className="inventario-container">
+        <div className="usuarios-container">
             <h2>Inventario</h2>
-            <div className="inventario-header">
+            <div className="usuarios-header">
                 <button onClick={() => setMostrarFormulario(true)}>Nuevo Producto</button>
                 <div className="busqueda-container">
                     <button className="busqueda-button" onClick={handleBusquedaId}>
@@ -92,15 +98,20 @@ export default function Inventario() {
                         placeholder="Buscar por ID"
                         value={busquedaId}
                         onChange={(e) => setBusquedaId(e.target.value)}
-                        className="busqueda-id"
+                        className="busqueda-dni"
                     />
                 </div>
-                <div className="filtro-tipo-container">
+                <div className="filtro-rol-container">
                     <label>Filtrar por tipo:</label>
                     <select className='barrafiltro' onChange={(e) => handleFiltrarPorTipo(e.target.value)}>
                         <option value="">Todos</option>
-                        <option value="tipo1">Tipo 1</option>
-                        <option value="tipo2">Tipo 2</option>
+                        <option value="Almacenamiento">Almacenamiento</option>
+                        <option value="Memoria RAM">Memoria RAM</option>
+                        <option value="Procesador">Procesador</option>
+                        <option value="Placa Madre">Placa Madre</option>
+                        <option value="Tarjeta Gráfica">Tarjeta Gráfica</option>
+                        <option value="Monitor">Monitor</option>
+                        <option value="Periférico">Periférico</option>
                     </select>
                 </div>
             </div>
@@ -115,7 +126,13 @@ export default function Inventario() {
                     productoActualizar={productoActualizar}
                 />
             )}
-            <table className="inventario-table">
+             {productoDetalle && (
+                <ModalDetalleProducto
+                    producto={productoDetalle}
+                    onClose={() => setProductoDetalle(null)}
+                />
+            )}
+            <table className="usuarios-table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -135,8 +152,9 @@ export default function Inventario() {
                             <td>{producto.stock}</td>
                             <td>{producto.tipo}</td>
                             <td>
-                                <button onClick={() => handleActualizarClick(producto)}>Actualizar</button>
+                                <button className='button-actualizar' onClick={() => handleActualizarClick(producto)}>Actualizar</button>
                                 <button onClick={() => handleEliminarProducto(producto.id)}>Eliminar</button>
+                                <button className='detalle'  onClick={() => handleVerDetalleProducto(producto)}>Ver Detalle</button>
                             </td>
                         </tr>
                     ))}
