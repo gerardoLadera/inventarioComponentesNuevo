@@ -7,7 +7,7 @@ import Proveedores from "./pages/Proveedores";
 import Usuarios from "./pages/Usuarios";
 import RouterWrapper from "./components/RouterWrapper";
 import Inventario from "./pages/Inventario";
-
+import Movimiento from "./pages/Movimientos"
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: '/sgi/inventario', // Nueva ruta para Usuarios
         element: <Inventario />,
+      },
+      {
+        path: '/sgi/movimientos', // Nueva ruta para Usuarios
+        element: <Movimiento/>,
       },
       // Agrega más rutas aquí según sea necesario
     ],

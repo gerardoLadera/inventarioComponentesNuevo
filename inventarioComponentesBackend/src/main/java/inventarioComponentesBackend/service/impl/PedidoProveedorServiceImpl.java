@@ -1,5 +1,8 @@
 package inventarioComponentesBackend.service.impl;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -40,6 +43,19 @@ public class PedidoProveedorServiceImpl implements PedidoProveedorService {
         if (pedido.getCodigo() == null || pedido.getCodigo().isEmpty()) {
             pedido.setCodigo(generarNuevoCodigoPP());
         }
+        
+        if (pedido.getFechaPedido() == null || pedido.getFechaPedido().isEmpty()) {
+            Date fecha = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            pedido.setFechaPedido(dateFormat.format(fecha));
+        }
+        if (pedido.getHoraPedido() == null || pedido.getHoraPedido().isEmpty()) {
+            long currentTimeMillis = System.currentTimeMillis();
+            Time horaa = new Time(currentTimeMillis);
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+            pedido.setHoraPedido(timeFormat.format(horaa));
+        }
+
         PedidoProveedorServiceImpl.Nodo nuevoNodo = new PedidoProveedorServiceImpl.Nodo(pedido);
         if (listaPP == null) {
             listaPP = nuevoNodo;

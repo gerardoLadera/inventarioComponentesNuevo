@@ -35,13 +35,6 @@ public class PedidoProveedor {
         this.id_producto = id_producto;
         this.cantidad = cantidad;
 
-        // Formatear la fecha
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        this.fechaPedido = dateFormat.format(fechaPedido);
-
-        // Formatear la hora
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-        this.horaPedido = timeFormat.format(horaPedido);
     }
 
     public String getCodigo() {

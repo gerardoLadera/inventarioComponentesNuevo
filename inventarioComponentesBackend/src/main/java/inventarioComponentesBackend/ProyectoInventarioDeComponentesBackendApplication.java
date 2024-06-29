@@ -36,8 +36,8 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 
 	@Autowired
 	private PedidoProveedorService pedidoProveedorService;
-	//@Autowired
-	//private MovimientoService movimientoService;
+	@Autowired
+	private MovimientoService movimientoService;
 	
 
 
@@ -50,10 +50,8 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 	@Override
 	public void run(String... args) throws Exception {
 
-		Date fecha= new Date();
-		long currentTimeMillis = System.currentTimeMillis();
-		Time hora=new Time(currentTimeMillis );
-		//movimientoService.registrarMovimiento(new Movimiento("Entrada",fecha, hora, "Lapto Toshiba","010"));
+	
+		//movimientoService.registrarMovimiento(new Movimiento("Salida ", "Audifono Sony","011"));
 		//movimientoService.modificarMovimiento("00001", new Movimiento("Entrada",fecha, hora, "Laptos Dell i5","003"));
 		//Movimiento movi=movimientoService.buscarMovimientoPorId("00001");
 		//List<Movimiento>movimientos=movimientoService.obtenerTodosLosMovimientos();

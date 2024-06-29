@@ -30,19 +30,27 @@ public class Movimiento {
     }
 
     
-    public Movimiento( String tipoMovimiento,Date fechaMovimiento, Time hora, String descripcion,String codigoPedido) {
+    public Movimiento( String tipoMovimiento, String descripcion,String codigoPedido) {
         
         this.tipoMovimiento = tipoMovimiento;
         this.descripcion = descripcion;
         this.codigoPedido = codigoPedido;
+
+        /*Date fecha=new Date();
+        long currentTimeMillis = System.currentTimeMillis();
+		Time horaa=new Time(currentTimeMillis );
         // Formatear la fecha
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        this.fechaMovimiento = dateFormat.format(fechaMovimiento);
+        this.fechaMovimiento = dateFormat.format(fecha);
 
         // Formatear la hora
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-        this.hora = timeFormat.format(hora);
+        this.hora = timeFormat.format(horaa);*/
     }
+
+
+
+    
 
 
     public String getCodigo() {

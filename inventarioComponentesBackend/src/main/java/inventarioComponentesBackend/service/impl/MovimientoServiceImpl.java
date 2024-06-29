@@ -1,5 +1,8 @@
 package inventarioComponentesBackend.service.impl;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +42,19 @@ public class MovimientoServiceImpl implements MovimientoService {
         if (movimiento.getCodigo() == null || movimiento.getCodigo().isEmpty()) {
             movimiento.setCodigo(generarNuevoCodigo());
         }
+
+        if (movimiento.getFechaMovimiento() == null || movimiento.getFechaMovimiento().isEmpty()) {
+            Date fecha = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            movimiento.setFechaMovimiento(dateFormat.format(fecha));
+        }
+        if (movimiento.getHora() == null || movimiento.getHora().isEmpty()) {
+            long currentTimeMillis = System.currentTimeMillis();
+            Time horaa = new Time(currentTimeMillis);
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+            movimiento.setHora(timeFormat.format(horaa));
+        }
+        
         Nodo nuevoNodo = new Nodo(movimiento);
         if (listaMovimientos == null) {
             listaMovimientos = nuevoNodo;
@@ -72,8 +88,6 @@ public class MovimientoServiceImpl implements MovimientoService {
                 actual.movimiento.setTipoMovimiento(movimientoActualizado.getTipoMovimiento());
                 actual.movimiento.setDescripcion(movimientoActualizado.getDescripcion());
                 actual.movimiento.setCodigoPedido(movimientoActualizado.getCodigoPedido());
-                actual.movimiento.setHora(movimientoActualizado.getHora());
-                actual.movimiento.setFechaMovimiento(movimientoActualizado.getFechaMovimiento());
                 movimientoRepository.save(actual.movimiento);
                 return;
             }
