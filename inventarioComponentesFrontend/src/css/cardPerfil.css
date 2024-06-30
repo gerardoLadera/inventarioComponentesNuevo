@@ -1,7 +1,7 @@
 .card-perfil {
   background-color: rgba(0, 0, 0, 0.6);
   padding: 40px;
-  padding-bottom: 90px; /* Aumentar el padding inferior */
+  padding-bottom: 90px; 
   border-radius: 10px;
   text-align: center;
   color: white;
@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  /* Aumentar la altura del componente */
+  
 }
 
 .avatar-container {
@@ -19,19 +19,19 @@
 }
 
 .avatar {
-  width: 170px; /* Tamaño aumentado */
-  height: 170px; /* Tamaño aumentado */
+  width: 170px; 
+  height: 170px; 
   border-radius: 50%;
-  border: 6px solid #771e32; /* Borde más grueso */
+  border: 6px solid #771e32; 
 }
 
 .info-container {
-  text-align: center; /* Texto centrado */
+  text-align: center; 
 }
 
 .info-container h2 {
-  color: #f2ecee; /* Rojo vino */
-  margin-bottom: 15px; /* Espaciado entre nombre y otros textos */
+  color: #f2ecee; 
+  margin-bottom: 15px; 
   font-size: 2em;
 }
 
@@ -41,6 +41,6 @@
 }
 
 .attribute-name {
-  color: #e29faf; /* Rojo vino para el nombre de los atributos */
-  font-weight: bold; /* Texto más grueso */
+  color: #e29faf; 
+  font-weight: bold; 
 }

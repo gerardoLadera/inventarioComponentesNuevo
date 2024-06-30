@@ -9,6 +9,7 @@ import iconoPedido from "../img/iconoPedido.png";
 import { useUser } from '../contexts/UserContext';
 import LinkButton from '../components/LinkButton';
 import SGIIcon from "../img/SGIIcon.png";
+import cerrarIcono from "../img/cerrarIcono.png"
 export default function BarraLateral() {
   const location = useLocation();
   const { usuario } = useUser();
@@ -59,6 +60,13 @@ export default function BarraLateral() {
                 <Link to="/control">
                   <LinkButton active={location.pathname === '/control'} img={iconoControl}>
                     Control de Calidad
+                  </LinkButton>
+                </Link>
+              </li>
+              <li>
+                <Link className="cerrar-sesion-link" to="/">
+                  <LinkButton   active={location.pathname === '/'} img={cerrarIcono}>
+                    Cerrar Sesión
                   </LinkButton>
                 </Link>
               </li>

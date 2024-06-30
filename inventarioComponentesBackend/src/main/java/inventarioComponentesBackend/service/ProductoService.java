@@ -18,6 +18,8 @@ public interface ProductoService {
     List<Producto> obtenerTodosLosProductos();
 
     void cargarProductosDesdeBaseDeDatos();
+    
+    List<Producto> alertaStock();
 
     List<Producto> obtenerProductosPorTipo(String tipo);
 

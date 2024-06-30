@@ -10,9 +10,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import inventarioComponentesBackend.model.Lote;
 import inventarioComponentesBackend.model.Movimiento;
+import inventarioComponentesBackend.model.PedidoProveedor;
 import inventarioComponentesBackend.repository.MovimientoRepository;
+import inventarioComponentesBackend.service.LoteService;
 import inventarioComponentesBackend.service.MovimientoService;
+import inventarioComponentesBackend.service.PedidoProveedorService;
 import jakarta.annotation.PostConstruct;
 
 
@@ -20,6 +24,12 @@ import jakarta.annotation.PostConstruct;
 public class MovimientoServiceImpl implements MovimientoService {
     @Autowired
     private MovimientoRepository movimientoRepository;
+
+    @Autowired
+    private LoteService loteService;
+
+    @Autowired
+    private PedidoProveedorService pedidoProveedorService;
 
     private Nodo listaMovimientos;
 
@@ -65,7 +75,24 @@ public class MovimientoServiceImpl implements MovimientoService {
             }
             actual.sgte = nuevoNodo;
         }
+
         movimientoRepository.save(movimiento);
+        
+        PedidoProveedor pedido = pedidoProveedorService.buscarPedidoProveedorPorId(movimiento.getCodigoPedido());
+        if (pedido != null) {
+            String codigoMovi = movimiento.getCodigo();
+            String codigoProducto = pedido.getId_producto();
+            int cantidad = pedido.getCantidad();
+            Lote nuevoLote = new Lote(codigoMovi, codigoProducto, cantidad);
+
+            loteService.registrarLote(nuevoLote);
+        } else {
+            // Manejo de error si el pedido no se encuentra
+            System.err.println("PedidoProveedor no encontrado con el ID: " + movimiento.getCodigoPedido());
+            // Podrías lanzar una excepción o manejar el caso de alguna otra manera
+            // throw new RuntimeException("PedidoProveedor no encontrado con el ID: " + movimiento.getCodigoPedido());
+        }
+        
     }
 
     @Override

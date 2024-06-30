@@ -49,8 +49,11 @@ return (
             <h2>{movimientoActualizar ? 'Actualizar Movimiento' : 'Crear Movimiento'}</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>Tipo:</label>
-                    <input type="text" name="tipoMovimiento" value={form.tipoMovimiento} onChange={handleChange} required />
+                  <label>Tipo:</label>
+                  <select name="tipoMovimiento" value={form.tipoMovimiento} onChange={handleChange} required>
+                      <option value="Entrada">Entrada</option>
+                      <option value="Salida">Salida</option>
+                  </select>
                 </div>
                 <div className="form-group">
                     <label>Id Pedido:</label>

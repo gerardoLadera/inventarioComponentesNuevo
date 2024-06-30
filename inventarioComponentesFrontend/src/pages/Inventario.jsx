@@ -2,7 +2,8 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import FormRegistroProducto from '../components/FormRegistroProducto';
 import ModalDetalleProducto from '../components/ModalVerDetalle';
-import { obtenerProductos, obtenerProductoPorId, actualizarProducto, eliminarProducto, obtenerProductosPorTipo } from '../data/apiProductos';
+import {alertaStock,obtenerProductos, obtenerProductoPorId, actualizarProducto, eliminarProducto, obtenerProductosPorTipo } from '../data/apiProductos';
+import AlertaStock from '../components/AlertaStockBajo';
 import '../css/usuarios.css'; // Importa el archivo CSS para los estilos
 import lupa from '../img/lupaIcon.png';
 
@@ -12,17 +13,23 @@ export default function Inventario() {
     const [busquedaId, setBusquedaId] = useState('');
     const [productoActualizar, setProductoActualizar] = useState(null);
     const [productoDetalle, setProductoDetalle] = useState(null);
+    const [mostrarAlertaStockBajo, setMostrarAlertaStockBajo] = useState(false);
 
     useEffect(() => {
         const fetchProductos = async () => {
             try {
                 const productosObtenidos = await obtenerProductos();
                 setProductos(productosObtenidos);
+                const productosBajoStock = await alertaStock();
+                if (productosBajoStock.length > 0) {
+                    setMostrarAlertaStockBajo(true);
+                }
             } catch (error) {
                 console.error('Error al obtener los productos:', error);
             }
         };
         fetchProductos();
+        
     }, []);
 
     const handleCrearProducto = (nuevoProducto) => {
@@ -131,6 +138,11 @@ export default function Inventario() {
                     producto={productoDetalle}
                     onClose={() => setProductoDetalle(null)}
                 />
+            )}
+             {mostrarAlertaStockBajo && (
+                <div className="alerta-stock-bajo">
+                    <AlertaStock />
+                </div>
             )}
             <table className="usuarios-table">
                 <thead>

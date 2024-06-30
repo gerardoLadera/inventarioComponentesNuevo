@@ -1,10 +1,12 @@
 package inventarioComponentesBackend.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Stack;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +23,7 @@ public class ProductoServiceImpl implements ProductoService{
 
     private Nodo lista;
     
-    
+    private Stack<Producto> productosBajoStock = new Stack<>(); 
 
 
     private class Nodo {
@@ -152,6 +154,19 @@ public class ProductoServiceImpl implements ProductoService{
         } else {
             return "001";
         }
+    }
+
+    @Override
+    public List<Producto> alertaStock() {
+        productosBajoStock.clear();
+        Nodo temp = lista;
+        while (temp != null) {
+            if (temp.producto.getStock() < 20) { 
+                productosBajoStock.push(temp.producto);
+            }
+            temp = temp.sgte;
+        }
+        return new ArrayList<>(productosBajoStock);
     }
 
     @Override

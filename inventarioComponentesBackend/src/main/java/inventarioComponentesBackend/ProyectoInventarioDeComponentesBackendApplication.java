@@ -11,11 +11,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import inventarioComponentesBackend.model.Lote;
 import inventarioComponentesBackend.model.Movimiento;
 import inventarioComponentesBackend.model.PedidoProveedor;
 import inventarioComponentesBackend.model.Producto;
 import inventarioComponentesBackend.model.Proveedor;
 import inventarioComponentesBackend.model.Usuario;
+import inventarioComponentesBackend.service.LoteService;
 import inventarioComponentesBackend.service.MovimientoService;
 import inventarioComponentesBackend.service.PedidoProveedorService;
 import inventarioComponentesBackend.service.ProductoService;
@@ -39,6 +41,8 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 	@Autowired
 	private MovimientoService movimientoService;
 	
+	@Autowired
+	private LoteService loteService;
 
 
 	public static void main(String[] args) {
@@ -50,8 +54,11 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 	@Override
 	public void run(String... args) throws Exception {
 
-	
-		//movimientoService.registrarMovimiento(new Movimiento("Salida ", "Audifono Sony","011"));
+		//loteService.registrarLote(new Lote("00005", "005", 27));
+		//loteService.modificarLote("0001",new Lote("00010", "005", 21));
+		//loteService.eliminarLote("0001");
+		//loteService.buscarLotePorId("0001");
+		//movimientoService.registrarMovimiento(new Movimiento("Salida ", "009","0018"));
 		//movimientoService.modificarMovimiento("00001", new Movimiento("Entrada",fecha, hora, "Laptos Dell i5","003"));
 		//Movimiento movi=movimientoService.buscarMovimientoPorId("00001");
 		//List<Movimiento>movimientos=movimientoService.obtenerTodosLosMovimientos();

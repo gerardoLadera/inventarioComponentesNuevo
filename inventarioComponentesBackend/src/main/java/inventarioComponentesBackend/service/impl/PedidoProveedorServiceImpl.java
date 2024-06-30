@@ -106,24 +106,39 @@ public class PedidoProveedorServiceImpl implements PedidoProveedorService {
         if (listaPP == null) {
             return false;
         }
+
         if (listaPP.pedido.getCodigo().equals(id)) {
             PedidoProveedor pedidoAEliminar = listaPP.pedido;
-            listaPP.sgte.ant = null;
+    
+
+            if (listaPP.sgte != null) {
+                listaPP.sgte.ant = null;
+            }
             listaPP = listaPP.sgte;
+    
             PPRepository.delete(pedidoAEliminar);
             return true;
         }
+    
         PedidoProveedorServiceImpl.Nodo actual = listaPP;
+    
+
         while (actual.sgte != null) {
-            if (actual.pedido.getCodigo().equals(id)) {
-                PedidoProveedor pedidoAEliminar = actual.pedido;
-                actual.ant.sgte = actual.sgte;
-                actual.sgte.ant = actual.ant;
+            if (actual.sgte.pedido.getCodigo().equals(id)) {
+                PedidoProveedor pedidoAEliminar = actual.sgte.pedido;
+    
+
+                actual.sgte = actual.sgte.sgte;
+                if (actual.sgte != null) {
+                    actual.sgte.ant = actual;
+                }
+    
                 PPRepository.delete(pedidoAEliminar);
                 return true;
             }
             actual = actual.sgte;
         }
+    
         return false;
     }
 

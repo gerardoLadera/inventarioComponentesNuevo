@@ -58,3 +58,14 @@ export const obtenerProductosPorTipo = async (tipo) => {
         throw error;
     }
 };
+
+
+export const alertaStock = async () => {
+    try {
+        const response = await axios.get('http://localhost:8080/api/productos/alertaStock');
+        return response.data;
+    } catch (error) {
+        console.error('Error al obtener productos bajo stock:', error);
+        throw error;
+    }
+};

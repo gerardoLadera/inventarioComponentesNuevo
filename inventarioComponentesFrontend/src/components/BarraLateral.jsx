@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import '../css/barraLateral.css';
 import iconoPerfil from "../img/iconoPerfil.png";
-import iconoEmple from "../img/iconoEmple.png";
+import iconoHome from "../img/homeIcono.png";
 import iconoProve from "../img/iconoProve.png";
 import iconoInvent from "../img/iconoInvent.png";
 import iconoMovi from "../img/iconoMovi.png";
@@ -11,6 +11,7 @@ import iconoUser from "../img/iconoUser.png";
 import { useUser } from '../contexts/UserContext';
 import LinkButton from '../components/LinkButton';
 import SGIIcon from "../img/SGIIcon.png";
+import cerrarIcono from "../img/cerrarIcono.png"
 
 export default function BarraLateral() {
   const location = useLocation();
@@ -30,6 +31,13 @@ export default function BarraLateral() {
         <hr />
           <nav>
             <ul>
+            <li>
+                <Link to="/sgi">
+                  <LinkButton active={location.pathname === '/sgi'} img={iconoHome}>
+                    Home
+                  </LinkButton>
+                </Link>
+              </li>
               <li>
                 <Link to="/sgi/perfil">
                   <LinkButton active={location.pathname === '/sgi/perfil'} img={iconoPerfil}>
@@ -66,9 +74,16 @@ export default function BarraLateral() {
                 </Link>
               </li>
               <li>
-                <Link to="/movimientos">
-                  <LinkButton active={location.pathname === '/movimientos'} img={iconoPedido}>
+                <Link to="/sgi/pedidosP">
+                  <LinkButton active={location.pathname === '/sgi/pedidosP'} img={iconoPedido}>
                     Pedidos
+                  </LinkButton>
+                </Link>
+              </li>
+              <li>
+                <Link className="cerrar-sesion-link" to="/">
+                  <LinkButton   active={location.pathname === '/'} img={cerrarIcono}>
+                    Cerrar Sesión
                   </LinkButton>
                 </Link>
               </li>

@@ -77,7 +77,7 @@ export default function Movimientos() {
               </button>
               <input
                 type="text"
-                placeholder="Buscar por id"
+                placeholder="Buscar por código"
                 value={busquedaCodigo}
                 onChange={(e) => setBusquedaCodigo(e.target.value)}
                 className="busqueda-dni"
