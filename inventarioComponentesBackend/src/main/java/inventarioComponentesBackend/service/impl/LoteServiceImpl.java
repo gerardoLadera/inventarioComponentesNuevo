@@ -106,6 +106,7 @@ public class LoteServiceImpl implements LoteService{
 
                 int stockActualizado=producto.getStock()+cantidad;
                 producto.setStock(stockActualizado);
+                productoService.actualizarProducto(codigoProducto, producto);
 
                 loteRepository.save(lote);
             }
