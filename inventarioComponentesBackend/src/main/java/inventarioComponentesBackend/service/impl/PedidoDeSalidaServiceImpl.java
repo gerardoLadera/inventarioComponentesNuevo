@@ -186,8 +186,8 @@ public class PedidoDeSalidaServiceImpl implements PedidoDeSalidaService {
         for (Movimiento movimiento : movimientos) {
             if (movimiento.getCodigoPedido().equals(pedidoDeSalida.getCodigo())) {
                 movimiento.setDescripcion(descripcion);
-                movimiento.setFechaMovimiento(pedidoDeSalida.getFechaPedido().toString());
-                movimiento.setHora(pedidoDeSalida.getHoraPedido().toString());
+                movimiento.setFechaMovimiento(pedidoDeSalida.getFechaPedido());
+                movimiento.setHora(pedidoDeSalida.getHoraPedido());
                 movimientoService.modificarMovimiento(movimiento.getCodigo(),movimiento);
                 break;
             }

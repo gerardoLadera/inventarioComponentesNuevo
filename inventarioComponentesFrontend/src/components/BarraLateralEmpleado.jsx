@@ -50,8 +50,8 @@ export default function BarraLateral() {
                 </Link>
               </li>
               <li>
-                <Link to="/sgi/pedidos">
-                  <LinkButton active={location.pathname === '/pedidos'} img={iconoPedido}>
+                <Link to="/sgi/pedidosCliente">
+                  <LinkButton active={location.pathname === '/sgi/pedidosCliente'} img={iconoPedido}>
                     Atender Pedidos
                   </LinkButton>
                 </Link>

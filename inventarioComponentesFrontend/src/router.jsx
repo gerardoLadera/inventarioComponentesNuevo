@@ -7,7 +7,8 @@ import Proveedores from "./pages/Proveedores";
 import Usuarios from "./pages/Usuarios";
 import RouterWrapper from "./components/RouterWrapper";
 import Inventario from "./pages/Inventario";
-import Movimiento from "./pages/Movimientos"
+import Movimiento from "./pages/Movimientos";
+import PedidosCliente from "./pages/PedidosDeSalida";
 import PedidosProveedor from "./pages/PedidosProveedor";
 
 export const router = createBrowserRouter([
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
       {
         path: '/sgi/pedidosP', // Nueva ruta para Usuarios
         element: <PedidosProveedor/>,
+      },
+      {
+        path: '/sgi/pedidosCliente', // Nueva ruta para Usuarios
+        element: <PedidosCliente/>,
       },
       // Agrega más rutas aquí según sea necesario
     ],
