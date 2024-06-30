@@ -77,22 +77,22 @@ public class MovimientoServiceImpl implements MovimientoService {
         }
 
         movimientoRepository.save(movimiento);
-        
-        PedidoProveedor pedido = pedidoProveedorService.buscarPedidoProveedorPorId(movimiento.getCodigoPedido());
-        if (pedido != null) {
-            String codigoMovi = movimiento.getCodigo();
-            String codigoProducto = pedido.getId_producto();
-            int cantidad = pedido.getCantidad();
-            Lote nuevoLote = new Lote(codigoMovi, codigoProducto, cantidad);
-
-            loteService.registrarLote(nuevoLote);
-        } else {
-            // Manejo de error si el pedido no se encuentra
-            System.err.println("PedidoProveedor no encontrado con el ID: " + movimiento.getCodigoPedido());
-            // Podrías lanzar una excepción o manejar el caso de alguna otra manera
-            // throw new RuntimeException("PedidoProveedor no encontrado con el ID: " + movimiento.getCodigoPedido());
-        }
-        
+        if(movimiento.getTipoMovimiento().equals("Entrada")){
+            PedidoProveedor pedido = pedidoProveedorService.buscarPedidoProveedorPorId(movimiento.getCodigoPedido());
+            if (pedido != null) {
+                String codigoMovi = movimiento.getCodigo();
+                String codigoProducto = pedido.getId_producto();
+                int cantidad = pedido.getCantidad();
+                Lote nuevoLote = new Lote(codigoMovi, codigoProducto, cantidad);
+    
+                loteService.registrarLote(nuevoLote);
+            } else {
+                // Manejo de error si el pedido no se encuentra
+                System.err.println("PedidoProveedor no encontrado con el ID: " + movimiento.getCodigoPedido());
+                // Podrías lanzar una excepción o manejar el caso de alguna otra manera
+                // throw new RuntimeException("PedidoProveedor no encontrado con el ID: " + movimiento.getCodigoPedido());
+            }
+        }   
     }
 
     @Override

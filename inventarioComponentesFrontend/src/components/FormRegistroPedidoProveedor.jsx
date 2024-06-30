@@ -74,7 +74,7 @@ export default function FormRegistroPedidoProvee({ onClose, onPedidoCreado, onPe
         const movimiento = {
             tipoMovimiento: 'Entrada',
             codigoPedido: nuevoPedido.codigo, 
-            descripcion: form.id_producto
+            descripcion:"Entrada de producto con ID:" + form.id_producto
           };
           await registrarMovimiento(movimiento);
     }

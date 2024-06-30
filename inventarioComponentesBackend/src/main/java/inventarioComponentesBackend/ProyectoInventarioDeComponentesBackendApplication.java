@@ -13,12 +13,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import inventarioComponentesBackend.model.Lote;
 import inventarioComponentesBackend.model.Movimiento;
+import inventarioComponentesBackend.model.PedidoDeSalida;
 import inventarioComponentesBackend.model.PedidoProveedor;
 import inventarioComponentesBackend.model.Producto;
 import inventarioComponentesBackend.model.Proveedor;
 import inventarioComponentesBackend.model.Usuario;
 import inventarioComponentesBackend.service.LoteService;
 import inventarioComponentesBackend.service.MovimientoService;
+import inventarioComponentesBackend.service.PedidoDeSalidaService;
 import inventarioComponentesBackend.service.PedidoProveedorService;
 import inventarioComponentesBackend.service.ProductoService;
 import inventarioComponentesBackend.service.ProveedorService;
@@ -44,6 +46,8 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 	@Autowired
 	private LoteService loteService;
 
+	@Autowired
+	private PedidoDeSalidaService pedidoDeSalidaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoInventarioDeComponentesBackendApplication.class, args);
@@ -54,6 +58,8 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 	@Override
 	public void run(String... args) throws Exception {
 
+		//pedidoDeSalidaService.registrarPedidoDeSalida(new PedidoDeSalida("21087671", "72113566", "001",11));
+		
 		//loteService.registrarLote(new Lote("00005", "005", 27));
 		//loteService.modificarLote("0001",new Lote("00010", "005", 21));
 		//loteService.eliminarLote("0001");
