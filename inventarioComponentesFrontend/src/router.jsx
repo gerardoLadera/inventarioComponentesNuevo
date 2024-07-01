@@ -10,7 +10,7 @@ import Inventario from "./pages/Inventario";
 import Movimiento from "./pages/Movimientos";
 import PedidosCliente from "./pages/PedidosDeSalida";
 import PedidosProveedor from "./pages/PedidosProveedor";
-
+import ControlCalidad from "./pages/Control";
 export const router = createBrowserRouter([
   {
     element: <RouterWrapper />,
@@ -47,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: '/sgi/pedidosCliente', // Nueva ruta para Usuarios
         element: <PedidosCliente/>,
+      },
+      {
+        path: '/sgi/control', // Nueva ruta para Usuarios
+        element: <ControlCalidad/>,
       },
       // Agrega más rutas aquí según sea necesario
     ],

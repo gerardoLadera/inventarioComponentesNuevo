@@ -87,10 +87,9 @@ public class MovimientoServiceImpl implements MovimientoService {
     
                 loteService.registrarLote(nuevoLote);
             } else {
-                // Manejo de error si el pedido no se encuentra
+                
                 System.err.println("PedidoProveedor no encontrado con el ID: " + movimiento.getCodigoPedido());
-                // Podrías lanzar una excepción o manejar el caso de alguna otra manera
-                // throw new RuntimeException("PedidoProveedor no encontrado con el ID: " + movimiento.getCodigoPedido());
+                
             }
         }   
     }

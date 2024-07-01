@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Queue;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,16 +28,22 @@ public class LoteServiceImpl implements LoteService{
         private ProductoService productoService;
         
 
-        private Queue<Lote> colaLotes;
+        private Nodo listaLotes;
 
-        @PostConstruct
-        public void init() {
-            cargarLotesDesdeBaseDeDatos();
-        }
+    private class Nodo {
+        Lote lote;
+        Nodo siguiente;
+        Nodo anterior;
 
-        public LoteServiceImpl() {    
-            colaLotes = new LinkedList<>();       
+        Nodo(Lote lote) {
+            this.lote = lote;
         }
+    }
+
+    @PostConstruct
+    public void init() {
+        cargarLotesDesdeBaseDeDatos();
+    }
 
     @Override
     public void registrarLote(Lote lote) {
@@ -49,68 +55,111 @@ public class LoteServiceImpl implements LoteService{
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             lote.setFechaRecepcion(dateFormat.format(fecha));
         }
-        colaLotes.add(lote);
+
+        Nodo nuevoNodo = new Nodo(lote);
+        if (listaLotes == null) {
+            listaLotes = nuevoNodo;
+        } else {
+            Nodo actual = listaLotes;
+            while (actual.siguiente != null) {
+                actual = actual.siguiente;
+            }
+            actual.siguiente = nuevoNodo;
+            nuevoNodo.anterior = actual;
+        }
+
         loteRepository.save(lote);
     }
 
     @Override
     public Lote buscarLotePorId(String id) {
-        Optional<Lote> lote = loteRepository.findById(id);
-        return lote.orElse(null);
+        Nodo actual = listaLotes;
+        while (actual != null) {
+            if (actual.lote.getId().equals(id)) {
+                return actual.lote;
+            }
+            actual = actual.siguiente;
+        }
+        return null;
     }
 
     @Override
     public void modificarLote(String id, Lote loteActualizado) {
-        Lote lote = buscarLotePorId(id);
-        if (lote != null) {
-            lote.setCodigoMovimiento(loteActualizado.getCodigoMovimiento());
-            lote.setCodigoProducto(loteActualizado.getCodigoProducto());
-            lote.setCantidad(loteActualizado.getCantidad());
-            loteRepository.save(lote);
-        } else {
-            throw new IllegalArgumentException("Lote no encontrado");
+        Nodo actual = listaLotes;
+        while (actual != null) {
+            if (actual.lote.getId().equals(id)) {
+                actual.lote.setCodigoMovimiento(loteActualizado.getCodigoMovimiento());
+                actual.lote.setCodigoProducto(loteActualizado.getCodigoProducto());
+                actual.lote.setCantidad(loteActualizado.getCantidad());
+                loteRepository.save(actual.lote);
+                return;
+            }
+            actual = actual.siguiente;
         }
+        throw new IllegalArgumentException("Lote no encontrado");
     }
 
     @Override
     public boolean eliminarLote(String id) {
-        Lote lote = buscarLotePorId(id);
-        if (lote != null) {
-            colaLotes.remove(lote);
-            loteRepository.delete(lote);
-            return true;
+        Nodo actual = listaLotes;
+        while (actual != null) {
+            if (actual.lote.getId().equals(id)) {
+                loteRepository.delete(actual.lote);
+                if (actual.anterior != null) {
+                    actual.anterior.siguiente = actual.siguiente;
+                }
+                if (actual.siguiente != null) {
+                    actual.siguiente.anterior = actual.anterior;
+                }
+                if (actual == listaLotes) {
+                    listaLotes = actual.siguiente;
+                }
+                return true;
+            }
+            actual = actual.siguiente;
         }
         return false;
     }
 
     @Override
     public List<Lote> obtenerTodosLosLotes() {
-        return new ArrayList<>(colaLotes);
+        List<Lote> lista = new java.util.LinkedList<>();
+        Nodo actual = listaLotes;
+        while (actual != null) {
+            lista.add(actual.lote);
+            actual = actual.siguiente;
+        }
+        return lista;
     }
 
     @Override
     public void cargarLotesDesdeBaseDeDatos() {
+        listaLotes = null; // Limpiar lista antes de cargar desde la base de datos
         List<Lote> lotesEnBaseDeDatos = loteRepository.findAll();
-        colaLotes.addAll(lotesEnBaseDeDatos);
+        for (Lote lote : lotesEnBaseDeDatos) {
+            registrarLote(lote);
+        }
     }
 
     @Override
     public boolean validarCalidadLote(String id, boolean aprobado) {
-        Lote lote = buscarLotePorId(id);
-        if (lote != null) {
-            lote.setCalidadAprobada(aprobado);
-            if (aprobado) {
-                int cantidad = lote.getCantidad();
-                String codigoProducto = lote.getCodigoProducto();
-                Producto producto=productoService.buscarProducto(codigoProducto);
+        Nodo actual = listaLotes;
+        while (actual != null) {
+            if (actual.lote.getId().equals(id)) {
+                actual.lote.setCalidadAprobada(aprobado);
+                if (aprobado) {
+                    int cantidad = actual.lote.getCantidad();
+                    String codigoProducto = actual.lote.getCodigoProducto();
+                    Producto producto = productoService.buscarProducto(codigoProducto);
 
-                int stockActualizado=producto.getStock()+cantidad;
-                producto.setStock(stockActualizado);
-                productoService.actualizarProducto(codigoProducto, producto);
-
-                loteRepository.save(lote);
+                    int stockActualizado = producto.getStock() + cantidad;
+                    producto.setStock(stockActualizado);
+                    productoService.actualizarProducto(codigoProducto, producto);
+                }
+                loteRepository.save(actual.lote);
+                return true;
             }
-            return true;
+            actual = actual.siguiente;
         }
         return false;
     }
@@ -124,5 +173,4 @@ public class LoteServiceImpl implements LoteService{
             return "0001";
         }
     }
-
 }

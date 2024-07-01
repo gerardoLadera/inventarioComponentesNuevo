@@ -51,8 +51,9 @@ return (
                 <div className="form-group">
                   <label>Tipo:</label>
                   <select name="tipoMovimiento" value={form.tipoMovimiento} onChange={handleChange} required>
-                      <option value="Entrada">Entrada</option>
-                      <option value="Salida">Salida</option>
+                        <option value="">Selecciona...</option>
+                        <option value="Entrada">Entrada</option>
+                        <option value="Salida">Salida</option>
                   </select>
                 </div>
                 <div className="form-group">

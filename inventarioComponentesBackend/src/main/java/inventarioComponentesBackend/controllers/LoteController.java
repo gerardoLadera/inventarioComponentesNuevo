@@ -33,7 +33,7 @@ public class LoteController {
         return ResponseEntity.ok(lotes);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("buscar/{id}")
     public ResponseEntity<Lote> buscarLotePorId(@PathVariable String id) {
         Lote lote = loteService.buscarLotePorId(id);
         if (lote != null) {
@@ -49,7 +49,7 @@ public class LoteController {
         return new ResponseEntity<>(lote, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("modificar/{id}")
     public ResponseEntity<Lote> modificarLote(@PathVariable String id, @RequestBody Lote loteActualizado) {
         try {
             loteService.modificarLote(id, loteActualizado);
@@ -59,7 +59,7 @@ public class LoteController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("eliminar/{id}")
     public ResponseEntity<Void> eliminarLote(@PathVariable String id) {
         boolean eliminado = loteService.eliminarLote(id);
         if (eliminado) {

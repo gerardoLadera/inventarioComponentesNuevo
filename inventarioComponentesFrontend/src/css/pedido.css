@@ -1,0 +1,23 @@
+.tabla{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.tabla th{
+    padding: 20px;
+    text-align: center;
+    background-color: #A4133C;
+    color: white;
+    font-weight: 500;
+}
+.tabla-body{
+    background-color: #f2f2f2;
+}
+
+.tabla-row td{
+    padding: 10px;
+    text-align: center;
+}
+.tabla-row:hover{
+    background-color: #dadada;
+}

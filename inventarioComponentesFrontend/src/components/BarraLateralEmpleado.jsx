@@ -57,8 +57,8 @@ export default function BarraLateral() {
                 </Link>
               </li>
               <li>
-                <Link to="/control">
-                  <LinkButton active={location.pathname === '/control'} img={iconoControl}>
+                <Link to="/sgi/control">
+                  <LinkButton active={location.pathname === '/sgi/control'} img={iconoControl}>
                     Control de Calidad
                   </LinkButton>
                 </Link>
