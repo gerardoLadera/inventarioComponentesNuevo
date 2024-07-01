@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import FormRegistroUsuario from '../components/FormRegistroUsuario';
 import { obtenerEmpleados,obtenerAdministradores,obtenerUsuarios,obtenerUsuarioPorDNI,actualizarUsuario,eliminarUsuario} from '../data/apiUsuarios';
-import '../css/usuarios.css'; // Importa el archivo CSS para los estilos
+import '../css/usuarios.css'; 
 import lupa from '../img/lupaIcon.png';
 export default function Usuarios() {
     const [usuarios, setUsuarios] = useState([]);

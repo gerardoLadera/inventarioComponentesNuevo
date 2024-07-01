@@ -134,7 +134,7 @@ public class LoteServiceImpl implements LoteService{
 
     @Override
     public void cargarLotesDesdeBaseDeDatos() {
-        listaLotes = null; // Limpiar lista antes de cargar desde la base de datos
+        listaLotes = null; 
         List<Lote> lotesEnBaseDeDatos = loteRepository.findAll();
         for (Lote lote : lotesEnBaseDeDatos) {
             registrarLote(lote);

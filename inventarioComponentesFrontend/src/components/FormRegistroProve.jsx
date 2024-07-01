@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react';
-import '../css/formCrearUsuario.css'; // Importa el archivo CSS para los estilos
+import '../css/formCrearUsuario.css'; 
 import { registrarProveedor,actualizarProveedor} from '../data/apiProveedores';
 export default function FormRegistroProve({ onClose, onProveedorCreado, onProveedorActualizado,proveedorActualizar }) {
   const [form, setForm] = useState({

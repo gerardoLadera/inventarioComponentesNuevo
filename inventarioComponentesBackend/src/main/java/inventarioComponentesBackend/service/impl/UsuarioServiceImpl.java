@@ -148,7 +148,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 
 
-    // Método para realizar el login
+   
     @Override
     public Usuario login(String username, String password) {
 

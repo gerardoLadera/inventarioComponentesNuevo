@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import CardPerfil from '../components/CardPerfil';
 import { useUser } from '../contexts/UserContext';
 import cajas_Perfil from "../img/cajas_Perfil.png";
-import '../css/perfil.css'; // Estilos específicos de la página de perfil
+import '../css/perfil.css'; 
 
 export default function Perfil (){
   const { usuario } = useUser();

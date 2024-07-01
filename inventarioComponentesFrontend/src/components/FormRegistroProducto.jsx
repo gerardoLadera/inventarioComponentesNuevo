@@ -67,6 +67,7 @@ return (
                 <div className="form-group">
                     <label>Tipo:</label>
                     <select name="tipo" value={form.tipo} onChange={handleChange} required>
+                        <option value="">Selecciona...</option>
                         <option value="Almacenamiento">Almacenamiento</option>
                         <option value="Memoria RAM">Memoria RAM</option>
                         <option value="Procesador">Procesador</option>

@@ -40,7 +40,7 @@ public class ProductoServiceImpl implements ProductoService{
         cargarProductosDesdeBaseDeDatos();
     }
 
-    // Método para agregar un producto a la lista enlazada 
+   
     @Override
     public void registrarProducto(Producto producto) {
         if (producto.getId() == null || producto.getId().isEmpty()) {
@@ -58,7 +58,7 @@ public class ProductoServiceImpl implements ProductoService{
         }
         productoRepository.save(producto);
     }
-    // Método para buscar un producto por ID en la lista de productos
+   
     @Override
     public Producto buscarProducto(String id) {
         Nodo temp = lista;
@@ -71,7 +71,7 @@ public class ProductoServiceImpl implements ProductoService{
         return null;
     }
 
-    // Método para eliminar un producto de la lista enlazada
+    
     @Override
     public boolean eliminarProducto(String idProducto) {
         if (lista == null) {
@@ -104,7 +104,7 @@ public class ProductoServiceImpl implements ProductoService{
         }
     }
 
-    // Método para ver el detalle de un producto
+ 
     @Override
     public Producto verDetalleProducto(String id) {
         Producto producto = buscarProducto(id);
@@ -115,7 +115,7 @@ public class ProductoServiceImpl implements ProductoService{
         }
     }
 
-    // Método auxiliar para obtener todos los productos de la lista enlazada
+    
     @Override
     public List<Producto> obtenerTodosLosProductos() {
         List<Producto> listaProductos = new LinkedList<>();

@@ -1,7 +1,7 @@
 import React from 'react';
 import adminIcon from "../img/adminIcon.png";
 import empleadoIcon from "../img/emepleadoIcon.png";
-import '../css/cardPerfil.css'; // Archivo CSS para estilos específicos del componente
+import '../css/cardPerfil.css'; 
 
 
 export default function CardPerfil({ usuario }) {  

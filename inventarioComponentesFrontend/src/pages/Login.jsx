@@ -17,7 +17,6 @@ export default function Login() {
     if (result.success) {
       alert('Inicio de sesión exitoso');
       setUsuario(result.data);
-      // Redirigimos dependiendo el rol de usuario
       navigator('/sgi')
     } else {
       alert(result.message);

@@ -25,34 +25,34 @@ export const router = createBrowserRouter([
         element: <Perfil />,
       },
       {
-        path: '/sgi/usuarios', // Nueva ruta para Usuarios
+        path: '/sgi/usuarios', 
         element: <Usuarios />,
       },
       {
-        path: '/sgi/proveedores', // Nueva ruta para Usuarios
+        path: '/sgi/proveedores', 
         element: <Proveedores />,
       },
       {
-        path: '/sgi/inventario', // Nueva ruta para Usuarios
+        path: '/sgi/inventario', 
         element: <Inventario />,
       },
       {
-        path: '/sgi/movimientos', // Nueva ruta para Usuarios
+        path: '/sgi/movimientos', 
         element: <Movimiento/>,
       },
       {
-        path: '/sgi/pedidosP', // Nueva ruta para Usuarios
+        path: '/sgi/pedidosP', 
         element: <PedidosProveedor/>,
       },
       {
-        path: '/sgi/pedidosCliente', // Nueva ruta para Usuarios
+        path: '/sgi/pedidosCliente', 
         element: <PedidosCliente/>,
       },
       {
-        path: '/sgi/control', // Nueva ruta para Usuarios
+        path: '/sgi/control', 
         element: <ControlCalidad/>,
       },
-      // Agrega más rutas aquí según sea necesario
+      
     ],
   },
   {

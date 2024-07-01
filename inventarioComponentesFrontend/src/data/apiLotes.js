@@ -1,5 +1,5 @@
 import axios from 'axios';
-// API to get all lots
+
 export const obtenerTodosLosLotes = async () => {
     try {
         const response = await axios.get('http://localhost:8080/api/lotes/todos');
@@ -10,7 +10,7 @@ export const obtenerTodosLosLotes = async () => {
     }
 };
 
-// Function to validate a lot
+
 
 export const validarLote = async (id, aprobado) => {
     const response = await axios.post(`http://localhost:8080/api/lotes/validar/${id}`, null, { params: { aprobado } });

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/modalDetalleProducto.css'; // Importa el archivo CSS para los estilos
+import '../css/modalDetalleProducto.css'; 
 
 const ModalDetalleProducto = ({ producto, onClose }) => {
     if (!producto) return null;
@@ -15,7 +15,6 @@ const ModalDetalleProducto = ({ producto, onClose }) => {
                 <div className="detalle-item"><strong>Stock:</strong> {producto.stock}</div>
                 <div className="detalle-item"><strong>Tipo:</strong> {producto.tipo}</div>
                 <div className="detalle-item"><strong>Descripción:</strong> {producto.descripcion}</div>
-                {/* Añade más campos si es necesario */}
                 <button onClick={onClose}>Cerrar</button>
             </div>
         </div>

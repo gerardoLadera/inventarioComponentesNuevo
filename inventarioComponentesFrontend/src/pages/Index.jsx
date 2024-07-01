@@ -6,9 +6,7 @@ export default function Index() {
     const [date, setDate] = useState(new Date());
     const [dates, setDates] = useState(getWeek(date));
 
-    /*const handleDateClick= (newDateClick)=>{
-        setDate(newDateClick);
-    }*/
+    
 
     return (
         <div className="page">
