@@ -59,7 +59,6 @@ public class ProyectoInventarioDeComponentesBackendApplication implements Comman
 	public void run(String... args) throws Exception {
 
 		//pedidoDeSalidaService.registrarPedidoDeSalida(new PedidoDeSalida("21087671", "72113566", "001",11));
-		
 		//loteService.registrarLote(new Lote("00005", "005", 27));
 		//loteService.modificarLote("0001",new Lote("00010", "005", 21));
 		//loteService.eliminarLote("0001");
