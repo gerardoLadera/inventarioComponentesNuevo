@@ -1,25 +1,31 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+
+import React, { useEffect, useState } from 'react';
+import { Outlet,Navigate } from 'react-router-dom';
 import { useUser } from '../contexts/UserContext';
 import BarraLateralAdmin from './BarraLateral';
 import BarraLateralEmpleado from './BarraLateralEmpleado';
 
 export default function RouterWrapper() {
   const { usuario } = useUser();
+  const [redirigir, setRedirigir] = useState(false);
 
-  const getBarraLateral = () => {
-    if (usuario?.rol === 'administrador') {
-      return <BarraLateralAdmin />;
-    } else if (usuario?.rol === 'empleado') {
-      return <BarraLateralEmpleado />;
-    } else {
-      return <BarraLateralAdmin />; 
+  useEffect(() => {
+    const rolValido = usuario?.rol === 'administrador' || usuario?.rol === 'empleado';
+
+    if (!rolValido && !redirigir) {
+      alert("Rol no definido. Contacto con un administrador.");
+      setRedirigir(true);
     }
-  };
+  }, [usuario, redirigir]);
+
+  if (redirigir) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <>
-      {getBarraLateral()}
+      {usuario?.rol === 'administrador' && <BarraLateralAdmin />}
+      {usuario?.rol === 'empleado' && <BarraLateralEmpleado />}
       <Outlet />
     </>
   );
