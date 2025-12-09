@@ -1,5 +1,8 @@
 package inventarioComponentesBackend.service.impl;
 
+// import static org.junit.jupiter.api.Assertions.assertEquals;
+// import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.util.LinkedList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +33,35 @@ public class UsuarioServiceImpl implements UsuarioService {
         cargarUsuariosDesdeBaseDeDatos();
     }
 
+    // @Override
+    // public void registrarUsuario(Usuario usuario){
+    //     Nodo nuevoNodo = new Nodo(usuario);
+    //     Nodo temp = listaUsuarios;
+    //     if (listaUsuarios == null) {
+    //         listaUsuarios = nuevoNodo;
+    //     } else {
+    //         while (temp.sgte != null) {
+    //             temp = temp.sgte;
+    //         }
+    //         temp.sgte = nuevoNodo;
+    //     }
+    //     usuarioRepository.save(usuario);
+    // }
+
+
     @Override
     public void registrarUsuario(Usuario usuario){
+        // 1. VALIDACIÓN (Caja Blanca): Verificar existencia antes de insertar
+        Usuario existente = buscarUsuario(usuario.getDni());
+        
+        if (existente != null) {
+            throw new IllegalArgumentException("Error: El usuario con DNI " + usuario.getDni() + " ya existe.");
+        }
+
+        // 2. Si no existe, procedemos con la lógica original de la Lista Enlazada
         Nodo nuevoNodo = new Nodo(usuario);
         Nodo temp = listaUsuarios;
+        
         if (listaUsuarios == null) {
             listaUsuarios = nuevoNodo;
         } else {
@@ -42,8 +70,14 @@ public class UsuarioServiceImpl implements UsuarioService {
             }
             temp.sgte = nuevoNodo;
         }
+        // 3. Guardado en BD
         usuarioRepository.save(usuario);
     }
+
+
+    
+
+
 
     public List<Usuario> obtenerTodosLosUsuarios() {
         List<Usuario> listaUsuarioss= new LinkedList<>();
@@ -91,6 +125,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         return false;
     }
 
+
+
     @Override
     public void cargarUsuariosDesdeBaseDeDatos() {
         List<Usuario> usuariosEnBaseDeDatos = usuarioRepository.findAll();
@@ -118,6 +154,9 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
         throw new IllegalArgumentException("Usuario no encontrado");
     }
+
+    
+
     
     @Override
     public List<Usuario> obtenerEmpleados() {
@@ -148,10 +187,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 
 
-   
     @Override
     public Usuario login(String username, String password) {
-
         Nodo temp = listaUsuarios;
         while (temp != null) {
             if (temp.usuario.getUsername().equals(username) && temp.usuario.getPassword().equals(password)) {
